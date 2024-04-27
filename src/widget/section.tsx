@@ -8,7 +8,7 @@ export interface SectionProps {
 
 function Section(props: SectionProps) {
     return (
-        <div style={{display: "flex", flexDirection: "column", marginTop: "24px"}} id = {props.title.toLowerCase().split(" ").join("")}>
+        <div style={{maxWidth: "1000px", display: "flex", flexDirection: "column", marginTop: "24px"}} id = {props.title.toLowerCase().split(" ").join("")}>
             <Typography
                 variant="h4"
                 noWrap

@@ -12,7 +12,7 @@ interface SimpleExperienceProps {
 
 export default function SimpleExerience() {
     return <Grid container>
-        {LIST_EXPERIENCES.map(prop => <Grid item xs = {6}>
+        {LIST_EXPERIENCES.map(prop => <Grid item xs = {12} sm = {6} >
             <SimpleExperienceItem {...{name: prop.name, title: prop.title, logo: prop.logo ?? ""}}></SimpleExperienceItem>
         </Grid>)}
     </Grid>
@@ -59,8 +59,8 @@ function SimpleExperienceItem(props: SimpleExperienceProps){
                 src = {props.logo} ></Box>
             </Box> 
             <div style = {{display: "flex", flexDirection: "column", alignItems:"center", marginTop: "8px"}}>
-                <Box sx = {{width: "80px", height: "80px", display: {md: "none", xs: "flex"}, justifyItems: "center", alignItems: "center", marginRight: "32px"}}>
-                        <Box component = "img" src = {props.logo} style={{maxHeight:"80px", width: "80px", margin: "auto"}}></Box>
+                <Box sx = {{width: "80px", height: "80px", display: {md: "none", xs: "flex"}, justifyItems: "center", alignItems: "center"}}>
+                    <Box component = "img" src = {props.logo} style={{maxHeight:"80px", width: "80px", margin: "auto"}}></Box>
                 </Box>
                 <div style = {{display: "flex", flexDirection: "column", alignItems:"center"}}>
                     <Typography
@@ -68,28 +68,28 @@ function SimpleExperienceItem(props: SimpleExperienceProps){
                         noWrap
                         component="a"
                         sx={{
-                        fontFamily: 'monospace',
-                        fontWeight: 700,
-                        letterSpacing: '.25rem',
-                        textDecoration: 'none',
-                        color: "navy"
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            letterSpacing: '.25rem',
+                            textDecoration: 'none',
+                            color: "navy"
                         }}
                     >
                         {props.name}
                     </Typography>
                     <Typography
-                            variant="body1"
-                            noWrap
-                            component="a"
-                            sx={{
+                        variant="body2"
+                        noWrap
+                        component="a"
+                        sx={{
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             textDecoration: 'none',
                             color: "grey"
-                            }}
-                        >
-                            {props.title}
-                        </Typography>
+                        }}
+                    >
+                        {props.title}
+                    </Typography>
                 </div>
             </div>
         </div>

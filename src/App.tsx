@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import './App.css';
 import AboutMe from './widget/about_me/AboutMe';
 import Experience from './widget/experience/Experience';
@@ -29,16 +30,19 @@ const hobbies = {
 
 function App() {
   return (
-    <div style = {{
+    <Box style = {{
       display: "flex",
       flexDirection: "column",
-      width: "100%",
       alignItems: "center",
-      justifyItems : "center"
+      justifyItems : "center",
     }}>
       <div style =  {{
-          maxWidth: "1000px",
+          width: "100%",
           marginBottom: "64px",
+          alignItems: "center",
+          justifyItems : "center",
+          display: "flex",
+          flexDirection: "column",
         }}>
         <ResponsiveAppBar/>
         <LandingPage/>
@@ -47,7 +51,7 @@ function App() {
         <Section {...hobbies}/>
       </div>
       <Footer/>
-    </div>
+    </Box>
   );
 }
 

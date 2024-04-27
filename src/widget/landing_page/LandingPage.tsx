@@ -67,7 +67,7 @@ function LandingPage () {
             <Box component= "img" src = {hoangdz} sx = {{maxWidth: "100%"}} style = {{boxShadow: '0 2px 32px rgba(0, 0, 0, .2), 0 16px 21px rgba(0, 0, 0, .55)',}}/>
             <TextTransition springConfig={presets.wobbly} style = {{
                 position: "absolute", top: "36%", color: "white",
-                fontSize: "48px", left: "15%", maxWidth: "200px",
+                fontSize: "36px", left: "15%", maxWidth: "200px",
                 fontFamily: 'pacifico'
             }}>{TEXTS[index % TEXTS.length]}</TextTransition>
         </div>
