@@ -5,7 +5,7 @@ import onsquareLogo from "./onsquare.png";
 import luveriLogo from "./luveri.png";
 import cdsnLogo from "./Group 5.svg"
 
-interface ExperienceItemProps {
+export interface ExperienceItemProps {
     name: string;
     logo: string | undefined;
     startDate: Date;
@@ -68,14 +68,14 @@ const Luveri = {
     ]
 }
 
-const props: ExperienceItemProps[] = [Luveri, CDSNLab, Anduin, Onsquare];
+export const LIST_EXPERIENCES: ExperienceItemProps[] = [Luveri, CDSNLab, Anduin, Onsquare];
 
 
 function Experience() {
 
     return (
         <div style = {{display: "flex", flexDirection: "column"}}>
-            {props.map(prop => <ExperienceItem {...prop}></ExperienceItem>)}
+            {LIST_EXPERIENCES.map(prop => <ExperienceItem {...prop}></ExperienceItem>)}
         </div>
     );
 }
