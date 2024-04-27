@@ -30,7 +30,7 @@ function SimpleExperienceItem(props: SimpleExperienceProps){
             return
         }
         setIsSpinning(true)
-        setRotateAngle([360, 720])
+        setRotateAngle([-360, 720])
     }
 
     var executeOnMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -58,7 +58,7 @@ function SimpleExperienceItem(props: SimpleExperienceProps){
                 component = "img" 
                 src = {props.logo} ></Box>
             </Box> 
-            <div style = {{display: "flex", flexDirection: "column", alignItems:"center"}}>
+            <div style = {{display: "flex", flexDirection: "column", alignItems:"center", marginTop: "8px"}}>
                 <Box sx = {{width: "80px", height: "80px", display: {md: "none", xs: "flex"}, justifyItems: "center", alignItems: "center", marginRight: "32px"}}>
                         <Box component = "img" src = {props.logo} style={{maxHeight:"80px", width: "80px", margin: "auto"}}></Box>
                 </Box>
