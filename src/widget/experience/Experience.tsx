@@ -4,6 +4,7 @@ import anduinLogo from "./anduin.png";
 import onsquareLogo from "./onsquare.png";
 import luveriLogo from "./luveri.png";
 import cdsnLogo from "./Group 5.svg"
+import iclabLogo from "./ic_lab.jpg";
 
 export interface ExperienceItemProps {
     name: string;
@@ -68,7 +69,17 @@ const Luveri = {
     ]
 }
 
-export const LIST_EXPERIENCES: ExperienceItemProps[] = [Luveri, CDSNLab, Anduin, Onsquare];
+const ICLab = {
+    name: "IC Lab",
+    logo: iclabLogo,
+    startDate: new Date("2024-06-01"),
+    endDate: new Date("2024-09-01"),
+    title: "Undergraduate Intern, Research Assistant",
+    roles: []
+
+}
+
+export const LIST_EXPERIENCES: ExperienceItemProps[] = [Luveri, ICLab, CDSNLab, Anduin, Onsquare];
 
 
 function Experience() {
