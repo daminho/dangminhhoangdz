@@ -1,102 +1,67 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import FacebookIcon from '@mui/icons-material/Facebook'
-import LinkedInIcon from '@mui/icons-material/LinkedIn'
-import GitHubIcon from '@mui/icons-material/GitHub'
-import InstagramIcon from '@mui/icons-material/Instagram'
-import IconButton from '@mui/material/IconButton';
+import { Box, Typography, IconButton, Link } from "@mui/material";
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import EmailIcon from '@mui/icons-material/Email';
 
-
-function Footer() {
+export default function Footer() {
     return (
-        <Box sx = {{
-            width: "100%",
-            minHeight: "36px", 
-            display: "flex",
-            justifyContent: "center"
-        }}>
-            <Box sx = {{
-                paddingLeft: "32px",
-                paddingRight: "32px",
-                display: "flex",
-                alignItems: "center",
-                height: "100%",
-                flexDirection: {
-                    xs: "column",
-                    md: "row"
-                }
-            }}>
-        
-
-            <Box sx = {{display: "flex"}}>
-                <IconButton href = 'https://www.linkedin.com/in/dang-minh-hoang-8b6683179/' target = 'blank'>
-                        <LinkedInIcon sx = {{height: "24px"}}/>
-                </IconButton>
-
-                <IconButton href = 'https://github.com/daminho' target = 'blank'>
-                    <GitHubIcon sx = {{height: "24px"}}/>
-                </IconButton>
-
-                <IconButton href = 'https://www.instagram.com/consoidaudan/' target = 'blank'>
-                    <InstagramIcon sx = {{height: "24px"}}/>
-                </IconButton>
-
-                <IconButton href = 'https://www.facebook.com/dangminhhoangdz' target = 'blank'>
-                    <FacebookIcon sx = {{height: "24px"}}/>
-                </IconButton>
-            </Box>
-
-            <Box sx = {{
-                height: { md: "24px", xs: "1px"},
-                width:  { md: "1px", xs: "160px"},
-                marginX: {md: "20px", xs: "0px"},
-                marginY: {md: "0px", xs: "4px"},
-                 backgroundColor: "grey"
-            }}></Box>
-
-            <Typography
-                    variant="h6"
-                    noWrap
-                    component="a"
-                    sx={{
-                        fontFamily: 'monospace',
-                        fontWeight: 700,
-                        textDecoration: 'none',
-                        color: "grey",
-                        fontSize: "12px"
-                    }}
-                >
-                    dangminhhoangdz@gmail.com
-                </Typography>
-
-            <Box sx = {{
-                height: { md: "24px", xs: "1px"},
-                width: { md: "1px", xs: "160px"},
-                marginX: {md: "20px", xs: "0px"},
-                marginY: {md: "0px", xs: "4px"},
-                backgroundColor: "grey"
-            }}></Box>
-
-
-            <Typography
-                variant="h6"
-                noWrap
-                component="a"
+        <Box
+            component="footer"
+            sx={{
+                width: "100%",
+                py: 3,
+                px: 2,
+                mt: "auto",
+                backgroundColor: "rgba(255,255,255,0.8)",
+                backdropFilter: "blur(10px)",
+            }}
+        >
+            <Box
                 sx={{
-                    fontFamily: 'monospace',
-                    fontWeight: 700,
-                    textDecoration: 'none',
-                    color: "grey",
-                    fontSize: "12px"
+                    maxWidth: "1000px",
+                    margin: "0 auto",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "16px",
                 }}
             >
-                +82 10 9575 7883
-            </Typography>
-            
+                <Box sx={{ display: "flex", gap: "24px" }}>
+                    <IconButton
+                        component={Link}
+                        href="https://github.com/daminho"
+                        target="_blank"
+                        sx={{ color: "navy" }}
+                    >
+                        <GitHubIcon />
+                    </IconButton>
+                    <IconButton
+                        component={Link}
+                        href="https://linkedin.com/in/dangminhhoangdz"
+                        target="_blank"
+                        sx={{ color: "navy" }}
+                    >
+                        <LinkedInIcon />
+                    </IconButton>
+                    <IconButton
+                        component={Link}
+                        href="mailto:dangminhhoangdz@gmail.com"
+                        sx={{ color: "navy" }}
+                    >
+                        <EmailIcon />
+                    </IconButton>
+                </Box>
+                <Typography
+                    variant="body2"
+                    sx={{
+                        fontFamily: 'monospace',
+                        color: "#666",
+                        textAlign: "center",
+                    }}
+                >
+                    © {new Date().getFullYear()} Dang Minh Hoang. All rights reserved.
+                </Typography>
             </Box>
         </Box>
     );
 }
-
-
-export default Footer;

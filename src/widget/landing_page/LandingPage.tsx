@@ -1,77 +1,118 @@
-import Box from "@mui/material/Box";
-import React, { MouseEventHandler } from "react";
-import hoangdz from "./hoangdzvl.jpg"
-import TextTransition, { presets } from 'react-text-transition';
+import { Box, Typography, Container } from "@mui/material";
+import profileImage from "./profile.jpg";
 
-const TEXTS = ['Hello!', 'I\'m Dang Minh Hoang', 'Undergraduate Student @ KAIST', 'You can call me Hoangdz'];
-
-function LandingPage () {
-
-    const [index, setIndex] = React.useState(0);
-    const [rotateAngle, setRotateAngle] = React.useState([0, 0])
-
-    React.useEffect(() => {
-        const intervalId = setInterval(
-          () => setIndex((index) => index + 1),
-          3000, // every 3 seconds
-        );
-        return () => clearTimeout(intervalId);
-      }, []);
-
-    var executeOnMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        e.stopPropagation()
-        var image = document.getElementById("landing-image")
-        image!.style.transitionDuration = '100ms'
-        var height = image?.offsetHeight ?? 0
-        var width = image?.offsetWidth ?? 0
-        var center = [width / 2, height / 2]
-
-        var top = image?.offsetTop ?? 0
-        var left = image?.offsetLeft ?? 0
-        var shifted = [e.clientX - left, e.clientY - top]
-        
-        var coefficient = [(shifted[0] - center[0]) / Math.abs(center[0] - shifted[0]) , (center[1] - shifted[1]) / Math.abs(center[1] - shifted[1])]
-
-        var _rotateAngle = [Math.abs(center[1] - shifted[1]) * coefficient[1], Math.abs(center[0] - shifted[0]) * coefficient[0]]
-
-        for(var i = 0; i < 2; i++) {
-            _rotateAngle[i] = 10 * _rotateAngle[i] / center[1 - i]
-        }
-        setRotateAngle(_rotateAngle)
-        
-    }
-
-    var executeOnMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-        e.stopPropagation()
-        
-        setTimeout(() => {
-            var image = document.getElementById("landing-image")
-            image!.style.transitionDuration = '500ms'
-            setRotateAngle([0, 0])
-            
-        }, 500)
-    }
-
+export default function LandingPage() {
     return (
-        <div id = "landing-image" style={{ willChange: "transform", 
-            transform: `translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(${rotateAngle[0]}deg) rotateY(${rotateAngle[1]}deg) rotateZ(0deg) skew(0deg, 0deg)`,
-            transformStyle: "preserve-3d",
-            transitionDuration: '500ms',
-            maxWidth: "1000px", position: "relative",
-            padding: '20px',
-            backgroundColor: 'transparent',
-            }} 
-            onMouseMove={executeOnMouseMove}
-            onMouseLeave={executeOnMouseLeave}
-            >
-            <Box component= "img" src = {hoangdz} sx = {{maxWidth: "100%"}} style = {{boxShadow: '0 2px 32px rgba(0, 0, 0, .2), 0 16px 21px rgba(0, 0, 0, .55)',}}/>
-            <TextTransition springConfig={presets.wobbly} style = {{
-                position: "absolute", top: "36%", color: "white",
-                fontSize: "36px", left: "15%", maxWidth: "200px",
-                fontFamily: 'pacifico'
-            }}>{TEXTS[index % TEXTS.length]}</TextTransition>
-        </div>
+        <Box
+            sx={{
+                width: "100%",
+                minHeight: "80vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%)",
+                position: "relative",
+                overflow: "hidden",
+                marginTop: {xs: "24px", md: "48px"},
+                "&::before": {
+                    content: '""',
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    background: "linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent)",
+                    transform: "translateX(-100%)",
+                    transition: "transform 0.6s",
+                },
+            }}
+        >
+            <Container maxWidth="md">
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: { xs: "column", md: "row" },
+                        alignItems: "center",
+                        gap: { xs: "32px", md: "48px" },
+                    }}
+                >
+                    <Box
+                        sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: { xs: "center", md: "flex-start" },
+                            textAlign: { xs: "center", md: "left" },
+                            gap: "24px",
+                            flex: 1,
+                        }}
+                    >
+                        <Typography
+                            variant="h2"
+                            sx={{
+                                fontFamily: 'monospace',
+                                fontWeight: 700,
+                                color: "navy",
+                                fontSize: { xs: "2.5rem", md: "3.5rem" },
+                                lineHeight: 1.2,
+                            }}
+                        >
+                            Dang Minh Hoang
+                        </Typography>
+                        <Typography
+                            variant="h5"
+                            sx={{
+                                fontFamily: 'monospace',
+                                fontWeight: 500,
+                                color: "#545454",
+                                fontSize: { xs: "1.2rem", md: "1.5rem" },
+                                maxWidth: "600px",
+                            }}
+                        >
+                            Software Engineer
+                        </Typography>
+                        <Typography
+                            variant="body1"
+                            sx={{
+                                fontFamily: 'monospace',
+                                color: "#666",
+                                fontSize: { xs: "1rem", md: "1.2rem" },
+                                maxWidth: "500px",
+                                lineHeight: 1.6,
+                            }}
+                        >
+                            Building human-centric products that enhance efficiency and convenience in daily life
+                        </Typography>
+                    </Box>
+                    <Box
+                        sx={{
+                            flex: 1,
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            maxWidth: { xs: "300px", md: "400px" },
+                            width: "100%",
+                        }}
+                    >
+                        <Box
+                            component="img"
+                            src={profileImage}
+                            alt="Dang Minh Hoang"
+                            sx={{
+                                width: { xs: "300px", md: "400px" },
+                                height: { xs: "300px", md: "400px" },
+                                objectFit: "cover",
+                                borderRadius: "50%",
+                                boxShadow: "0 8px 32px rgba(0,0,0,0.1)",
+                                border: "4px solid white",
+                                transition: "transform 0.3s ease-in-out",
+                                "&:hover": {
+                                    transform: "scale(1.05)",
+                                },
+                            }}
+                        />
+                    </Box>
+                </Box>
+            </Container>
+        </Box>
     );
 }
-
-export default LandingPage;
